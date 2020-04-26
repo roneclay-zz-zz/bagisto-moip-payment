@@ -1,0 +1,26 @@
+{
+    "name": "roneclay/bagisto-wirecard-payment",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rone Clay Brasil",
+            "email": "roneclay@gmail.com"
+        }
+    ],
+    "require": {
+        "moip/moip-sdk-php": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fineweb\\Wirecard\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fineweb\\Wirecard\\Providers\\WirecardServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
