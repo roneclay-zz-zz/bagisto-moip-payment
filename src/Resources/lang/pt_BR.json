@@ -4,5 +4,9 @@
     "Checkout type": "Tipo de Checkout",
     "You will be redirected to the secure Wirecard environment to complete your purchase.": "Você será redirecionado para o ambiente seguro da Wirecard para concluir sua compra.",
     "Active": "Ativo",
-    "Inactive": "Inativo"
+    "Inactive": "Inativo",
+    "Wirecard: Please update your account with Date of birth information.": "Wirecard: atualize sua conta com as informações de data de nascimento.",
+    "Wirecard: To use this payment method you need to inform the token and acess key account of Wirecard account.": "Wirecard: Para usar esse método de pagamento, é necessário informar o token e acessar a conta principal da conta Wirecard.",
+    "To buy with this payment method you need to register your phone.": "Para comprar com esta forma de pagamento você precisa cadastrar o seu Telefone.",
+    "Boleto usually takes up to 72 business hours to be cleared, that is, 3 business days": "O boleto geralmente demora até 72 horas úteis para ser compensado, ou seja, 3 dias úteis"
 }

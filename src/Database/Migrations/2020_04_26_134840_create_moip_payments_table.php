@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Rone Clay Brasil. All rights reserved.
+ * @author    Rone Clay Brasil <roneclay@gmail.com>
+ */
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

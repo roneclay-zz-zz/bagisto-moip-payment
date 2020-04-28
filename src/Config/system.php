@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright (c) 2020. Rone Clay Brasil. All rights reserved.
+ * @author    Rone Clay Brasil <roneclay@gmail.com>
+ */
+
 return [
     [
         'key' => 'sales.paymentmethods.wirecardconfig',
@@ -59,7 +64,15 @@ return [
                     ]
                 ],
                 'validation' => 'required'
-            ]
+            ],
+            [
+                'name' => 'instructions',
+                'title' => __('Instructions'),
+                'type' => 'text',
+                'validation' => 'required',
+                'channel_based' => false,
+                'locale_based' => true,
+            ],
         ]
     ]
 ];

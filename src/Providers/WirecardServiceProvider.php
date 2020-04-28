@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright (c) 2020. Rone Clay Brasil. All rights reserved.
+ * @author    Rone Clay Brasil <roneclay@gmail.com>
+ */
 
 namespace Fineweb\Wirecard\Providers;
 
@@ -17,8 +21,6 @@ class  WirecardServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include __DIR__ . '/../Http/routes.php';
-
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         $this->loadJSONTranslationsFrom(__DIR__ . '/../Resources/lang');
