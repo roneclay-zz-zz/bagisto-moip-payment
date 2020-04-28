@@ -9,6 +9,7 @@ Receive payments through the Wirecard (Moip).
 
 ## How To install
 `composer require roneclay/bagisto-wirecard-payment`
+`php artisan migrate`
 
 ## Pay me a caipirinha
 :tropical_drink: PicPay **@roneclaybrasil**
@@ -29,6 +30,7 @@ Receba pagamentos usando Wirecard (Moip).
 
 ## Como instalar
 `composer require roneclay/bagisto-wirecard-payment`
+`php artisan migrate`
 
 ## Pague-me uma caipirinha
 :tropical_drink: PicPay **@roneclaybrasil**
