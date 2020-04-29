@@ -7,6 +7,7 @@
 namespace Fineweb\Wirecard\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 /**
  * Class WirecardServiceProvider
@@ -33,6 +34,16 @@ class  WirecardServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(
             dirname(__DIR__) . '/Config/paymentmethods.php', 'paymentmethods'
+        );
+
+        Event::listen(
+            'bagisto.shop.customers.account.orders.view.payment-method.after',
+            'Fineweb\Wirecard\Listeners\Order@showPaymentInfo'
+        );
+
+        Event::listen(
+            'sales.order.payment-method.after',
+            'Fineweb\Wirecard\Listeners\Order@showPaymentInfo'
         );
     }
 }

@@ -8,6 +8,7 @@ namespace Fineweb\Wirecard\Payment;
 
 use Exception;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use RuntimeException;
 use Webkul\Payment\Payment\Payment;
 use Moip\Moip;
@@ -111,7 +112,7 @@ class Wirecard extends Payment
             $payment = $this->applyPayment( $order );
 
             $moipPayment = new MoipPayment();
-            $moipPayment->cart_id = $cart->id;
+            $moipPayment->increment_id = $this->getIncrementId();
             $moipPayment->moip_order_data = json_encode($order );
             $moipPayment->moip_payment_data = json_encode($payment );
             $moipPayment->save();
@@ -119,6 +120,22 @@ class Wirecard extends Payment
         } catch (Exception $e) {
             throw new Exception('Wirecard: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * @return int|mixed
+     */
+    public function getIncrementId()
+    {
+        $increment_id = DB::table('orders')
+                ->orderBy('id', 'desc')
+                ->select('id')
+                ->first()
+                ->id ?? 0;
+
+        $increment_id++;
+
+        return $increment_id;;
     }
 
     /**
@@ -131,6 +148,8 @@ class Wirecard extends Payment
     {
         $moip = $this->initWirecardObject();
         $order = $moip->orders();
+        $incrementId = $this->getIncrementId() + 1;
+
         $order
             ->setOwnId(uniqid('', true))
             ->setCustomer($customer)

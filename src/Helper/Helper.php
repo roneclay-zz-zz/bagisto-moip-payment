@@ -6,6 +6,8 @@
 
 namespace Fineweb\Wirecard\Helper;
 
+use Illuminate\Support\Facades\DB;
+
 class Helper
 {
     /**
@@ -29,11 +31,29 @@ class Helper
         return $output;
     }
 
+    /**
+     * @param $price
+     * @return int
+     */
     public function formatPrice($price)
     {
         $price = number_format((float) $price, 2);
         $price = (int) str_replace('.','', $price);
 
         return $price;
+    }
+
+    /**
+     * @param $order
+     * @return mixed
+     */
+    public function getBoletoLink($order)
+    {
+        $attributes = $order->getAttributes();
+        $increment_id = $attributes['increment_id'];
+        $paymentData = DB::table('moip_payments')->where('increment_id', $increment_id)->value('moip_payment_data');
+        $payment = json_decode($paymentData, true);
+
+        return $payment['_links']['payBoleto']['redirectHref'];
     }
 }
