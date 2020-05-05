@@ -139,7 +139,6 @@ class Wirecard extends Payment
     }
 
     /**
-     * @param $moip
      * @param $cart
      * @param $customer
      * @return mixed
@@ -148,12 +147,11 @@ class Wirecard extends Payment
     {
         $moip = $this->initWirecardObject();
         $order = $moip->orders();
-        $incrementId = $this->getIncrementId() + 1;
 
         $order
             ->setOwnId(uniqid('', true))
             ->setCustomer($customer)
-            ->setShippingAmount($this->helper->formatPrice($cart->grand_total - $cart->discount_amount)) // TODO: Check how to get shipping price
+            ->setShippingAmount($this->helper->formatPrice($cart->grand_total - $cart->sub_total - $cart->discount_amount)) // TODO: Check how to get shipping price
             ->setDiscount($this->helper->formatPrice($cart->discount_amount));
 
         $items = $this->getCartItems();

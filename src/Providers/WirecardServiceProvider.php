@@ -45,5 +45,10 @@ class  WirecardServiceProvider extends ServiceProvider
             'sales.order.payment-method.after',
             'Fineweb\Wirecard\Listeners\Order@showPaymentInfo'
         );
+
+        Event::listen(
+            'bagisto.shop.checkout.payment-method.after',
+            'Fineweb\Wirecard\Listeners\Checkout\Onepage@showPaymentForm'
+        );
     }
 }
